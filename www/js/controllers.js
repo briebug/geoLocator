@@ -13,15 +13,13 @@ angular.module('geoLocator')
         .then(function (position) {
           $scope.position = position;
 
-          $scope.latitude = position.coords.latitude.toFixed(3);
-          $scope.longitude = position.coords.longitude.toFixed(3);
+          $scope.latitude = position.coords.latitude;
+          $scope.longitude = position.coords.longitude;
 
           var altFt = position.coords.altitude * 3.2808;
           $scope.altitude = altFt.toFixed(0);
 
-          alert('got location');
         }, function(err) {
-          alert('did not get location');
           console.log('Location error: ' + JSON.stringify(err));
         });
 
@@ -36,7 +34,6 @@ angular.module('geoLocator')
       locationWatcher.then(null, locWatchErr, locWatchSuccess);
 
       function locWatchErr(err) {
-        alert('watch did not get location');
 
         console.log('Location watch error: ' + JSON.stringify(err));
       }
@@ -44,12 +41,11 @@ angular.module('geoLocator')
       function locWatchSuccess(position) {
         $scope.position = position;
 
-        $scope.lat = position.coords.latitude.toFixed(3);
-        $scope.long = position.coords.longitude.toFixed(3);
+        $scope.latitude = position.coords.latitude;
+        $scope.longitude = position.coords.longitude;
 
         var altFt = position.coords.altitude * 3.2808;
-        $scope.alt = altFt.toFixed(0);
-        alert(' watch got location');
+        $scope.altitude = altFt.toFixed(0);
 
       }
 

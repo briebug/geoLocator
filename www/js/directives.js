@@ -21,33 +21,15 @@ function MapInstanceLink(scope, elem, attrs) {
    */
 
   var mapOptions = {
-    center: { lat: 39.6595163, lng: -104.9822292}, //Denver
+    center: { lat: 39.7392358, lng: -104.990251}, //Denver
     zoom: 14
   };
 
   var map = new google.maps.Map(elem[0], mapOptions);
 
-  /*
-   *  Map bounds listeners / limiters.
-   */
-
-  // bounds of the desired area
-  //var allowedBounds = new google.maps.LatLngBounds(
-  //  new google.maps.LatLng(39.533623, -105.245112),
-  //  new google.maps.LatLng(39.771739, -104.827578)
-  //);
   var lastValidCenter = map.getCenter();
 
-  //google.maps.event.addListener(map, 'center_changed', function() {
-  //  if (allowedBounds.contains(map.getCenter())) {
-  //    // still within valid bounds, so save the last valid position
-  //    lastValidCenter = map.getCenter();
-  //    return;
-  //  }
-
-    // not valid anymore => return to last valid position
-    map.setCenter(lastValidCenter);
-  //});
+  map.setCenter(lastValidCenter);
 
   /*
    *  User GPS position and map set
